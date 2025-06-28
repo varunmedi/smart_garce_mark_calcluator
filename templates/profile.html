@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Faculty login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    
+
+</head>
+<body>
+	
+<div class="container">
+<div class="row gutters">
+	<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+		<div class="card h-100">
+			<div class="card-body">
+				<div class="account-settings">
+					<div class="user-profile">
+						<div class="user-avatar">
+							<a href="index">
+							<img src="{{fac.img.url}}" alt="{{fac.name}}">
+						</a>
+						</div>
+						<h5 class="user-name">{{fac.name}}</h5>
+						<h6 class="user-email">{{fac.email}}</h6>
+					</div>
+					<div class="about">
+						<h5 class="mb-2 text-primary">About</h5>
+						<p>"{{fac.teaches}} {{fac.about}}"</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+		<div class="card h-100">
+			<div class="card-body">
+				<form action={% url 'profile' %} method="POST" id="systemform">
+					{% csrf_token %}
+				<div class="row gutters">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+						<h6 class="mb-3 text-primary">Personal Details</h6>
+					</div>
+
+				    
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="fullName">Full Name</label>
+							<input type="text" class="form-control" name='name' form="systemform"  id="fullName" placeholder="{{fac.name}}">
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="eMail">Email</label>
+							<input type="email" class="form-control"name='email' form="systemform" id="eMail" placeholder="{{fac.email}}">
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="phone">Phone</label>
+							<input type="tel" pattern="[789][0-9]{9}"  maxLength={10} class="form-control" name='phone' form="systemform"  id="phone" placeholder="{{fac.phone}}">
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="website">Website URL</label>
+							<input type="url" class="form-control"form="systemform"  name='url' id="website" placeholder="{{fac.url}}">
+						</div>
+					</div>
+				</div>
+				
+			
+				<div class="row gutters">
+				
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+						<h6 class="mb-3 text-primary">Address</h6>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="Street">Street</label>
+							<input type="name" class="form-control" form="systemform" name='street' id="Street" placeholder="{{fac.street}}">
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="ciTy">City</label>
+							<input type="name" class="form-control" form="systemform" name='city' id="ciTy" placeholder="{{fac.city}}">
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="sTate">State</label>
+							<input type="text" class="form-control" form="systemform" name='state' id="sTate" placeholder="{{fac.state}}">
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="zIp">Pin Code</label>
+							<input type="text"  pattern="^[0-9]{6}$"  class="form-control" form="systemform" name='zipcode' id="zIp" placeholder="{{fac.zipcode}}">
+						</div>
+					</div>
+				</div>
+				<div class="row gutters">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+						<div class="text-right">
+							<button type="submit"  formaction={% url 'index' %}  name="submit" class="btn btn-primary">Back</button>
+						
+							
+							<button type="submit"  form="systemform"  name="submit" class="btn btn-primary">Update</button>
+							
+						</form>	
+						
+						</div>
+					
+					</div>
+				</div>
+			
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+<div>
+	</div>
+
+       
+	{% for i in messages%}
+	  <h1 style="text-align:center">{{i}}</h1>
+	{% endfor%}
+</div>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Student Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    	
+                
+body{
+  background-color: rgba(1,31,63,255);
+  margin-top:20px;}              
+.modal-footer {   border-top: 0px; }
+    </style>
+</head>
+<body>
+<!--login modal-->
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          
+          <h1 class="text-center">MARKS ENTRY</h1>
+      </div>
+      <div class="modal-body">
+          <form class="form col-md-12 center-block" method="POST" action="marks">
+            {% csrf_token %}
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" name="roll" id="roll" >
+            </div>
+            
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Next</button>
+            
+            </div>
+          
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-1accordion2">
+            <button type="submit"  formaction="index" name="submit" class="btn btn-primary">Back</button>
+          </form>
+    	  </div>	
+      </div>
+  </div>
+  </div>
+</div>
+
+       
+
+</div>
+{% for i in messages%}
+  <h1 style="position:center; color:white" >{{i}}</h1>
+{% endfor%}
+</div>
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+
+</body>
+
+</html>
